@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import styles from "./page.module.css";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -14,11 +13,12 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="ko">
       <body className={inter.className}>
-        <div className={styles.container}>{children}</div>
+        <div>{children}</div>
       </body>
     </html>
   );
