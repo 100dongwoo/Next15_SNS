@@ -10,7 +10,7 @@
   flex-direction: row;
 }
 
-/* .imageZone {
+.imageZone {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -62,4 +62,4 @@
 }
 .closeButton:hover {
   background-color: rgba(25, 25, 25, 0.75);
-} */
+}

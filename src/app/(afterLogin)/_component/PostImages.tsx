@@ -91,7 +91,7 @@ export default function PostImages({ post }: Props) {
           href={`/${post.User.id}/status/${post.postId}/photo/${post.Images[0].imageId}`}
           style={{
             backgroundImage: `url(${post.Images[0]?.link})`,
-            backgroundSize: "cover",
+            backgroundSize: "contain",
           }}
         ></Link>
         {/* <Link
