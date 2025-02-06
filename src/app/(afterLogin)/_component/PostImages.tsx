@@ -86,7 +86,6 @@ export default function PostImages({ post }: Props) {
   if (post.Images.length === 4) {
     return (
       <div className={cx(style.postImageSection, style.fourImage)}>
-        {post.Images[0]?.link}
         <Link
           href={`/${post.User.id}/status/${post.postId}/photo/${post.Images[0].imageId}`}
           style={{
@@ -94,7 +93,7 @@ export default function PostImages({ post }: Props) {
             backgroundSize: "contain",
           }}
         ></Link>
-        {/* <Link
+        <Link
           href={`/${post.User.id}/status/${post.postId}/photo/${post.Images[1].imageId}`}
           style={{
             backgroundImage: `url(${post.Images[1]?.link})`,
@@ -114,7 +113,7 @@ export default function PostImages({ post }: Props) {
             backgroundImage: `url(${post.Images[3]?.link})`,
             backgroundSize: "cover",
           }}
-        ></Link> */}
+        ></Link>
       </div>
     );
   }

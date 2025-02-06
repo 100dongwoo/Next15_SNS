@@ -58,21 +58,9 @@ export default function Post({ noImage }: Props) {
             </span>
           </div>
           <div>{target.content}</div>
-          <div className={style.postImageSection}>
-            <Link
-              href={`/${target.User.id}/status/${target.postId}/photo/${target.Images[0].imageId}`}
-              className={style.postImageSection}
-              style={{
-                backgroundImage: `url(${target.Images[0]?.link})`,
-                backgroundSize: "contain",
-              }}
-            >
-              <img src={target.Images[0]?.link} alt="" />
-            </Link>
-          </div>
-          {/* <div>
+          <div>
             <PostImages post={target} />
-          </div> */}
+          </div>
           <ActionButtons />
         </div>
       </div>
