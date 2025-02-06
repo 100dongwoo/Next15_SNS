@@ -15,3 +15,9 @@
 #### 해당 부분들의 폴더는 브라우저 URL의 영향을 주지않음
 
 - ()그룹, @folder, \_folder(private폴더)
+
+
+
+## MSW
+ - npx msw init public/ --save     
+ 
