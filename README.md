@@ -21,3 +21,14 @@
 ## MSW
  - npx msw init public/ --save     
  
+
+ ## Suspense에서 로딩 뜻
+ - nextjs 에서 데이터패칭
+ - 코드스플리팅 (react.lazy)
+ - use hook으로 값을 가져오는 경우
+
+```
+- page.tsx - > loading.tsx
+- 서버 Suspense -> fallback
+- react-query -> isPending
+```

@@ -5,7 +5,7 @@ export async function getFollowingPosts() {
       next: {
         tags: ["posts", "followings"],
       },
-      credentials: "include",
+      cache: "force-cache",
     }
   );
   // The return value is *not* serialized
