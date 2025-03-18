@@ -6,8 +6,10 @@ import AuthSession from "./_component/AuthSession";
 
 if (
   process.env.NEXT_RUNTIME === "nodejs" &&
-  process.env.NODE_ENV !== "production"
+  process.env.NODE_ENV !== "production" &&
+  process.env.NEXT_PUBLIC_MSW_ENABLED !== "false"
 ) {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { server } = require("@/mocks/http");
   server.listen();
 }
