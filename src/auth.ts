@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 // import async from "./app/(afterLogin)/search/page";
 // import { NextResponse } from "next/server";
@@ -38,7 +38,13 @@ export const {
           }
         );
         if (!authResponse.ok) {
-          return null;
+          const credentialsSignin = new CredentialsSignin();
+          if (authResponse.status === 404) {
+            credentialsSignin.code = "no_user";
+          } else if (authResponse.status === 401) {
+            credentialsSignin.code = "wrong_password";
+          }
+          throw credentialsSignin;
         }
         const user = await authResponse.json();
         console.log("user", user);

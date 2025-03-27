@@ -20,7 +20,11 @@ export default function LoginModal() {
         password,
         redirect: false,
       });
-      console.log(result);
+      if (result?.code === "no_user") {
+        setMessage("가입하지 않은 유저입니다.");
+      } else if (result?.code === "wrong_password") {
+        setMessage("비밀번호가 일치하지 않습니다.");
+      }
       router.replace("/home");
     } catch (err) {
       console.error(err);
