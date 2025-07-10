@@ -6,13 +6,12 @@ import Post from "@/app/(afterLogin)/_component/Post";
 import { Post as IPost } from "@/model/Post";
 import { Fragment, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import styles from "@/app/(afterLogin)/home/home.module.css";
 
 export default function PostRecommends() {
-  const { data, hasNextPage, fetchNextPage, isFetching, isPending } =
+  const { data, hasNextPage, fetchNextPage, isFetching } =
     useSuspenseInfiniteQuery<
       IPost[],
-      Object,
+      object,
       InfiniteData<IPost[]>,
       [_1: string, _2: string],
       number
