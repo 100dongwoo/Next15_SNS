@@ -1,4 +1,6 @@
-export const getSinglePost = async ({
+import { cookies } from "next/headers";
+
+export const getSinglePostServer = async ({
   queryKey,
 }: {
   queryKey: [string, string];
@@ -11,6 +13,7 @@ export const getSinglePost = async ({
         tags: ["posts", id],
       },
       credentials: "include",
+      headers: { Cookie: (await cookies()).toString() },
     }
   );
 

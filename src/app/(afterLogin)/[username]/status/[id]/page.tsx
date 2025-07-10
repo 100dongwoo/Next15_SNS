@@ -10,7 +10,23 @@ import {
 import { getComments } from "@/app/(afterLogin)/[username]/status/[id]/_lib/getComments";
 import React from "react";
 import Comments from "@/app/(afterLogin)/[username]/status/[id]/_component/Comments";
-import { getSinglePost } from "@/app/(afterLogin)/[username]/status/[id]/_lib/getSinglePost";
+import { getSinglePostServer } from "@/app/(afterLogin)/[username]/status/[id]/_lib/getSinglePostServer";
+import { User } from "@/model/User";
+import { Post } from "@/model/Post";
+import { getUserServer } from "@/app/(afterLogin)/[username]/_lib/getUserServer";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { username, id } = await params;
+  const [user, post]: [User, Post] = await Promise.all([
+    getUserServer({ queryKey: ["users", username] }),
+    getSinglePostServer({ queryKey: ["posts", id] }),
+  ]);
+  return {
+    title: `Z에서 ${user.nickname} 님 : ${post.content}`,
+    description: post.content,
+  };
+}
 
 type Props = {
   params: Promise<{ id: string; username: string }>;
