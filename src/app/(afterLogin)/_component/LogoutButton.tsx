@@ -12,7 +12,7 @@ export default function LogoutButton({ me }: Props) {
   const router = useRouter();
 
   const onLogout = () => {
-    signOut({ redirect: false }).then(() => {
+    signOut({ callbackUrl: "/" }).then(() => {
       router.replace("/");
     });
   };
