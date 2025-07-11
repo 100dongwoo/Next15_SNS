@@ -38,8 +38,8 @@ export default function PostRecommends() {
     <>
       {data?.pages.map((page, i) => (
         <Fragment key={i}>
-          {page.map((post) => (
-            <Post key={post.postId} post={post} />
+          {page.map((post, index) => (
+            <Post key={post.postId + index.toString()} post={post} />
           ))}
         </Fragment>
       ))}

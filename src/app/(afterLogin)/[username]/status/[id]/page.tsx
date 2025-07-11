@@ -15,6 +15,7 @@ import { User } from "@/model/User";
 import { Post } from "@/model/Post";
 import { getUserServer } from "@/app/(afterLogin)/[username]/_lib/getUserServer";
 import { Metadata } from "next";
+import { getSinglePost } from "./_lib/getSinglePost";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { username, id } = await params;
