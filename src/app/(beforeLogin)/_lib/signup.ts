@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (
   prevState: { message: string | null },
   formData: FormData

@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function CommentForm({ id }: Props) {
-  const [content, setContent] = useState("");
+  const [content] = useState("");
   const imageRef = useRef<HTMLInputElement>(null);
   const onClickButton = () => {};
   const onSubmit = () => {};

@@ -36,7 +36,7 @@ export const handlers = [
       },
     });
   }),
-  http.post(`${baseUrl}/api/users`, async ({ request }) => {
+  http.post(`${baseUrl}/api/users`, async ({}) => {
     console.log("회원가입");
     // return HttpResponse.text(JSON.stringify('user_exists'), {
     //   status: 403,
@@ -101,7 +101,7 @@ export const handlers = [
       },
     ]);
   }),
-  http.get(`${baseUrl}/api/followingPosts`, async ({ request }) => {
+  http.get(`${baseUrl}/api/followingPosts`, async ({}) => {
     await delay(3000);
     return HttpResponse.json([
       {
@@ -141,7 +141,7 @@ export const handlers = [
       },
     ]);
   }),
-  http.get(`${baseUrl}/api/search/:tag`, ({ request, params }) => {
+  http.get(`${baseUrl}/api/search/:tag`, ({ params }) => {
     const { tag } = params;
     return HttpResponse.json([
       {
@@ -181,7 +181,7 @@ export const handlers = [
       },
     ]);
   }),
-  http.get(`${baseUrl}/api/users/:userId/posts`, ({ request, params }) => {
+  http.get(`${baseUrl}/api/users/:userId/posts`, ({ params }) => {
     const { userId } = params;
     return HttpResponse.json([
       {
@@ -221,7 +221,7 @@ export const handlers = [
       },
     ]);
   }),
-  http.get(`${baseUrl}/api/users/:userId`, ({ request, params }) => {
+  http.get(`${baseUrl}/api/users/:userId`, ({ params }) => {
     const { userId } = params;
     const found = User.find((v) => v.id === userId);
     if (found) {
@@ -234,7 +234,7 @@ export const handlers = [
       }
     );
   }),
-  http.get(`${baseUrl}/api/posts/:postId`, ({ request, params }) => {
+  http.get(`${baseUrl}/api/posts/:postId`, ({ params }) => {
     const { postId } = params;
     if (parseInt(postId as string) > 10) {
       return HttpResponse.json(
@@ -256,7 +256,7 @@ export const handlers = [
       createdAt: generateDate(),
     });
   }),
-  http.get(`${baseUrl}/api/posts/:postId/comments`, ({ request, params }) => {
+  http.get(`${baseUrl}/api/posts/:postId/comments`, ({ params }) => {
     const { postId } = params;
     return HttpResponse.json([
       {
@@ -296,10 +296,10 @@ export const handlers = [
       },
     ]);
   }),
-  http.get(`${baseUrl}/api/followRecommends`, ({ request }) => {
+  http.get(`${baseUrl}/api/followRecommends`, ({}) => {
     return HttpResponse.json(User);
   }),
-  http.get(`${baseUrl}/api/trends`, ({ request }) => {
+  http.get(`${baseUrl}/api/trends`, ({}) => {
     return HttpResponse.json([
       { tagId: 1, title: "제로초", count: 1264 },
       { tagId: 2, title: "원초", count: 1264 },

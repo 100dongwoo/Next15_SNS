@@ -20,8 +20,8 @@ import { getSinglePost } from "./_lib/getSinglePost";
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { username, id } = await params;
   const [user, post]: [User, Post] = await Promise.all([
-    getUserServer({ queryKey: ["users", username] }),
-    getSinglePostServer({ queryKey: ["posts", id] }),
+    getUserServer({ queryKey: ["users", username] } as any),
+    getSinglePostServer({ queryKey: ["posts", id] } as any),
   ]);
   return {
     title: `Z에서 ${user.nickname} 님 : ${post.content}`,

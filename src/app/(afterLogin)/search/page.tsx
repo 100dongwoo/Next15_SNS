@@ -5,13 +5,12 @@ import Tab from "@/app/(afterLogin)/search/_component/Tab";
 import SearchResult from "./_component/SearchResult";
 import { Metadata, ResolvingMetadata } from "next";
 
-type Props = {
+type PageProps = {
   searchParams: Promise<{ q: string; f?: string; pf?: string }>;
-  parent: ResolvingMetadata;
 };
 
 export async function generateMetadata(
-  { searchParams }: Props,
+  { searchParams }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { q } = await searchParams;
@@ -22,7 +21,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function Search({ searchParams }: Props) {
+export default async function Search({ searchParams }: PageProps) {
   const query = await searchParams;
 
   return (
