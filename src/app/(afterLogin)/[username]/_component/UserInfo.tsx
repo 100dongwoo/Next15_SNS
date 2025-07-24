@@ -8,12 +8,14 @@ import { getUser } from "@/app/(afterLogin)/[username]/_lib/getUser";
 import { MouseEventHandler } from "react";
 import cx from "classnames";
 import { Session } from "next-auth";
+import { useRouter } from "next/navigation";
 
 type Props = {
   username: string;
   session: Session | null;
 };
 export default function UserInfo({ username, session }: Props) {
+  const router = useRouter();
   const { data: user, error } = useQuery<
     User,
     object,
@@ -269,12 +271,23 @@ export default function UserInfo({ username, session }: Props) {
             <div>@{user.id}</div>
           </div>
           {user.id !== session?.user?.email && (
-            <button
-              onClick={onFollow}
-              className={cx(style.followButton, followed && style.followed)}
-            >
-              {followed ? "팔로잉" : "팔로우"}
-            </button>
+            <>
+              <button
+                onClick={() => {
+                  const ids = [session?.user?.email, user.id];
+                  ids.sort();
+                  router.push(`/messages/${ids.join("-")}`);
+                }}
+              >
+                쪽지
+              </button>
+              <button
+                onClick={onFollow}
+                className={cx(style.followButton, followed && style.followed)}
+              >
+                {followed ? "팔로잉" : "팔로우"}
+              </button>
+            </>
           )}
         </div>
         <div className={style.userFollower}>
